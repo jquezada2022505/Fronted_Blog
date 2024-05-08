@@ -1,12 +1,17 @@
-import React from 'react';
+import PropTypes from 'prop-types'
 
-function BlogPost({ title, content }) {
+function BlogPost({ title, description }) {
   return (
     <article>
       <h2>{title}</h2>
-      <p>{content}</p>
+      <p>{description}</p>
     </article>
   );
+}
+
+BlogPost.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default BlogPost;
