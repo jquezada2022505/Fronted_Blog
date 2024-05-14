@@ -1,17 +1,13 @@
-import React from 'react';
-import Header from './assets/Header';
-import BlogPost from './assets/BlogPost';
+import { useRoutes } from 'react-router-dom'
+import routes from './routes.jsx'
+import { Toaster } from 'react-hot-toast'
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <main>
-        <BlogPost title="Bienvenido a mi Blog" content="Este es el primer post del blog de Josué." />
-        <BlogPost title="Segundo Post" content="Aquí continúa el contenido del blog de Josué." />
-      </main>
-    </div>
-  );
+export const App = () => {
+  let element = useRoutes(routes);
+  return(
+    <>
+    {element}
+    <Toaster position='top-center' reverseOrder={false}/>
+    </>
+  )
 }
-
-export default App;

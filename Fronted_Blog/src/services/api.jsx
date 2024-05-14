@@ -1,40 +1,42 @@
 import axios from "axios";
 
-const apiBlog = axios.create({
-    baseURL: 'http://127.0.0.1:3000/blog/v1',
-    timeout: 5000
+const api = axios.create({
+    baseURL: "http://127.0.0.1:3000/blog/v1",
+    timeout: 5000,
 })
 
-export const getComent = async (data) => {
-    try{
-        return await apiBlog.get('/api/coment', data)
-    }catch(e){
-        return{
+export const listarPublicaciones = async () => {
+    try {
+        return await api.get('/publications')
+    } catch (e) {
+        return {
             error: true,
             e
         }
     }
 }
 
-export const postComent = async (data) => {
-    try{
-        return await apiBlog.post('/api/coment', data)
-    }catch(e){
-        return{
+export const buscarPublicacion = async (id) => {
+    try {
+        return await api.get(`/publication/${id}`)
+    } catch (e) {
+        return {
             error: true,
             e
         }
     }
 }
 
-export const deleteComent = async (data) => {
-    try{
-        return await apiBlog.delete('/api/coment', data)
-    }catch(e){
-        return{
+export const agregarComentario = async (id, nombre, comentario) => {
+    try {
+        console.log('id', id)
+        console.log('nombre', nombre)
+        console.log('comentario', comentario)
+        return await api.put(`/publication/${id}`, {nombre, comentario})
+    } catch (e) {
+        return {
             error: true,
             e
         }
     }
 }
-
